@@ -5,10 +5,17 @@ class Header extends React.Component {
         super(props);
     }
 
+    changeView(view) {
+        this.props.changeView(view);
+    }
+
+    changeLoggedIn(isLoggedIn){
+        this.props.changeLoggedIn(isLoggedIn);
+    }
     render() {
 
         console.log('this.props', this.props);
-        var a = 10, b = 20;
+       
         return(<nav className="navbar navbar-expand-lg navbar-light bg-light">
                     <a className="navbar-brand"> Employee Mangment</a>
                     <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -19,14 +26,14 @@ class Header extends React.Component {
                         {
                           this.props.isLoggedIn && 
                             <li className="nav-item active">
-                                <a className="nav-link" href="#">Add Employee <span className="sr-only">(current)</span></a>
+                                <a className="nav-link cursor-pointer" onClick = {this.changeView.bind(this, 0)}> Add Employee </a>
                             </li>
 
                         }
                         {
                             this.props.isLoggedIn && 
                             <li className="nav-item">
-                                <a className="nav-link" href="#">View Employee</a>
+                                <a className="nav-link cursor-pointer" onClick ={this.changeView.bind(this, 1)}>View Employee</a>
                             </li>
                         }
                         
@@ -37,7 +44,8 @@ class Header extends React.Component {
                             
                             
                                 this.props.isLoggedIn
-                                ? <a className="nav-link" href="#">Sign Out</a>
+                                ? <a className="nav-link cursor-pointer" onClick = {this.changeLoggedIn.bind(this,false)} >
+                                        Sign Out</a>
                                 : <a className="nav-link" href="#">Sign In</a>
                             
                             

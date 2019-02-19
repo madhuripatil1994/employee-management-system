@@ -40,3 +40,7 @@
   bottom: 0;
   position: fixed;
 }
+
+.cursor-pointer {
+  cursor: pointer;
+}

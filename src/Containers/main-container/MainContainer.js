@@ -1,4 +1,8 @@
 import React from 'react';
+import AddEmployee from '../add-employee/AddEmployee';
+import EditEmployee from '../edit-employee/EditEmployee';
+import ViewEmployee from '../view-employee/ViewEmployee';
+
 
 class MainContainer extends React.Component {
     constructor(props) {
@@ -9,18 +13,20 @@ class MainContainer extends React.Component {
         return(<div>
             {
                 this.props.view == 0 && 
-                    <b> Add Employee </b>
+                    <AddEmployee/>
+                    
+                    
             }
 
             {
                 this.props.view == 1 && 
-                    <b> List Employee </b>
+                    <ViewEmployee employees={this.props.employees}/>
             }
 
 
             {
                 this.props.view == 2 && 
-                    <b> Edit Employee </b>
+                    <EditEmployee />
             }
 
         </div>)
