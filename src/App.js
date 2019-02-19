@@ -27,7 +27,7 @@ class App extends Component {
   }
 
   addEmployee(employee) {
-    // 
+    
   }
 
   changeView(view) {
@@ -36,7 +36,8 @@ class App extends Component {
     });
   }
 
-  changeLoggedIn(isLoggedIn){
+  changeLoggedIn(isLoggedIn, state){
+    console.log("state", state);
     this.setState(
       {
         isLoggedIn : isLoggedIn
