@@ -15,19 +15,35 @@ class App extends Component {
       isLoggedIn: true,
       view: 0,
       employees: [{
-        name: "Madhuri",
-        lastname: "Patil",
+        firstName: "Madhuri",
+        lastName: "Patil",
         designation: "Project Manager"
-      }, {
-        name: "Ashwini",
-        lastname: "Patil",
-        designation: 'Tech Lead'
       }]
     }
   }
 
+  delete(index){
+    var updatedArray = [];
+
+    this.state.employees.forEach(function(employee, originalIndex){
+    console.log("index-->", index);
+    console.log("originalIndex-->", originalIndex);
+
+        if(index != originalIndex){
+          updatedArray.push(employee);
+        }
+    })
+    this.setState({
+      employees :updatedArray
+    });
+  }
+
   addEmployee(employee) {
-    
+    var previousEmployees = this.state.employees;
+    previousEmployees.push(employee);
+    this.setState({
+      employees : previousEmployees
+    });
   }
 
   changeView(view) {
@@ -65,7 +81,10 @@ class App extends Component {
               this.state.isLoggedIn ? 
                 <MainContainer
                   view={this.state.view}
-                  employees={this.state.employees}/> 
+                  employees={this.state.employees}
+                  addEmployee ={this.addEmployee.bind(this)}
+                  changeView = {this.changeView.bind(this)}
+                  delete = {this.delete.bind(this)}/> 
 
               : <SignIn changeLoggedIn = {this.changeLoggedIn.bind(this)}/>
           }

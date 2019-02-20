@@ -13,14 +13,17 @@ class MainContainer extends React.Component {
         return(<div>
             {
                 this.props.view == 0 && 
-                    <AddEmployee/>
+                    <AddEmployee
+                    addEmployee = {this.props.addEmployee}
+                    changeView = {this.props.changeView}/>
                     
                     
             }
 
             {
                 this.props.view == 1 && 
-                    <ViewEmployee employees={this.props.employees}/>
+                    <ViewEmployee employees={this.props.employees}
+                    delete ={this.props.delete}/>
             }
 
 
