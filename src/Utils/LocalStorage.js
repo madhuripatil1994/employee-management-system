@@ -32,8 +32,23 @@ var deleteEmployee = (index) => {
       localStorage.setItem('employees', JSON.stringify(employeesObject))  
 }
 
+var applicationUsers = () => {
+
+    localStorage.setItem("user", "Madhuri");
+    localStorage.setItem("password", "madhu");
+}
+
+var getApplicationUsers = () => {
+
+    var user = localStorage.getItem("user");
+    var password = localStorage.getItem("password");
+
+    var userObject 
+}
+
 module.exports = {
     addEmployee,
     getemployees,
-    deleteEmployee
+    deleteEmployee,
+    applicationUsers
 }

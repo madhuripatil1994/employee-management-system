@@ -1,4 +1,5 @@
 import React from 'react';
+import {applicationUsers} from '../../Utils/LocalStorage';
 
 class SignIn extends React.Component {
 
@@ -17,15 +18,12 @@ class SignIn extends React.Component {
         })
     }
 
+    componentWillMount(){
+        applicationUsers();
+    }
 
-
-    changeLoggedIn(isLoggedIn){
-        console.log("this,state", this.state);
-        if(this.isValiadLogIn(this.state.username, this.state.password)) {
-            this.props.changeLoggedIn(isLoggedIn, this.state);
-        } else {
-            alert("Invalid credentials")
-        }
+    changeLoggedIn(){
+        
     }
 
     isValiadLogIn(username, password) {
@@ -41,12 +39,10 @@ class SignIn extends React.Component {
                 <div className="form-group">
                     <label>Email address</label>
                     
-                    <input type="email"
+                    <input type="text"
                         className="form-control" placeholder="Enter email"
                         onChange={this.onChange.bind(this, 'username')}>
                     </input>
-
-                    <small id="emailHelp" className="form-text text-muted">We'll never share your email with anyone else.</small>
                 </div>
                 <div className="form-group">
                     <label >Password</label>
@@ -57,7 +53,7 @@ class SignIn extends React.Component {
                          onChange={this.onChange.bind(this, 'password')}>
                     </input>
                 </div>
-                <button type="button" className="btn btn-primary" onClick = {this.changeLoggedIn.bind(this,true)}>Submit</button>
+                <button type="button" className="btn btn-primary" onClick = {this.changeLoggedIn.bind(this)}>Submit</button>
                 </form>
         );
     }
