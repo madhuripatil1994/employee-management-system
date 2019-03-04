@@ -36,3 +36,9 @@ You will also see any lint errors in the console.
         - action to close modal <br>
 
 3. Add Routing
+
+
+### GIT Coomands
+
+1. To switch to other remote repository 
+    - git remote set-url origin git://new.repo.url
