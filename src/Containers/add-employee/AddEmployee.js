@@ -1,4 +1,5 @@
 import React from 'react';
+import {addEmployee} from '../../Utils/LocalStorage'
 
 class AddEmployee extends React.Component {
 
@@ -22,8 +23,18 @@ class AddEmployee extends React.Component {
     }
 
     addEmployee(){
-        this.props.addEmployee(this.state.employee);
-        this.props.changeView(1);
+        if(this.isValidEmployee(this.state.employee.firstName,this.state.employee.lastName)){
+            addEmployee(this.state.employee);
+            this.props.history.push("/view-employee");
+        } else 
+            alert("Enter Employee Details");
+    }
+
+    isValidEmployee(fName, lName){
+        if(fName && lName) {
+            return true
+        }
+        return false
     }
 
     render(){

@@ -1,15 +1,35 @@
 import React from 'react';
+import {getemployees, deleteEmployee} from '../../Utils/LocalStorage';
 
 class ViewEmployee extends React.Component {
     
+    constructor(props){
+        super(props);
+        this.state = {
+            employees :[]
+        }
+    }
     delete(index){
-        this.props.delete(index);
+        deleteEmployee(index);
+        this.updateEmployees();
+    }
+
+    componentWillMount(){
+       this.updateEmployees();
+    }
+
+    updateEmployees(){
+        var employees = getemployees();
+        this.setState({
+            employees
+        })
     }
 
     render(){
         console.log(this.props.employees);
         var that = this;
         return (
+            <div>
             <table className="table">
                 <thead>
                     <tr>
@@ -23,7 +43,7 @@ class ViewEmployee extends React.Component {
                 </thead>
                     <tbody>
                         {
-                            this.props.employees.map(function(employee, index){
+                            this.state.employees.map(function(employee, index){
                                 return (<tr key={index}>
                                     <th scope="row">1</th>
                                     <td>{employee.firstName}</td>
@@ -44,6 +64,7 @@ class ViewEmployee extends React.Component {
                         
                     </tbody>
                 </table>
+                </div>
         );
     }
 

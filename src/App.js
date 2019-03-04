@@ -8,6 +8,7 @@ import MainContainer from './Containers/main-container/MainContainer';
 import SignIn from './Containers/sign-in/SignIn';
 
 
+
 class App extends Component {
   constructor(props) {
     super(props);
@@ -35,14 +36,6 @@ class App extends Component {
     })
     this.setState({
       employees :updatedArray
-    });
-  }
-
-  addEmployee(employee) {
-    var previousEmployees = this.state.employees;
-    previousEmployees.push(employee);
-    this.setState({
-      employees : previousEmployees
     });
   }
 
@@ -77,7 +70,6 @@ class App extends Component {
                 <MainContainer
                   view={this.state.view}
                   employees={this.state.employees}
-                  addEmployee ={this.addEmployee.bind(this)}
                   changeView = {this.changeView.bind(this)}
                   delete = {this.delete.bind(this)}/> 
 
@@ -86,7 +78,7 @@ class App extends Component {
           </div>
         </div>
         
-        
+     
         
         <Footer /> 
 

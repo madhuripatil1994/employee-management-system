@@ -6,10 +6,6 @@ class Header extends React.Component {
         super(props);
     }
 
-    changeView(view) {
-        this.props.changeView(view);
-    }
-
     changeLoggedIn(isLoggedIn){
         this.props.changeLoggedIn(isLoggedIn);
     }
@@ -26,13 +22,13 @@ class Header extends React.Component {
                     <ul className="navbar-nav">
                         <Link to="/add-employee">
                         <li className="nav-item active">
-                            <a className="nav-link cursor-pointer" onClick = {this.changeView.bind(this, 0)}> Add Employee </a>
+                            <a className="nav-link cursor-pointer" > Add Employee </a>
                         </li>
                         </Link>
 
-                        <Link to="/view-employeet">
+                        <Link to="/view-employee">
                         <li className="nav-item">
-                            <a className="nav-link cursor-pointer" onClick ={this.changeView.bind(this, 1)}>View Employee</a>
+                            <a className="nav-link cursor-pointer" >View Employee</a>
                         </li>
                         </Link>
                        
