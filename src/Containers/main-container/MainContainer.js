@@ -2,7 +2,9 @@ import React from 'react';
 import AddEmployee from '../add-employee/AddEmployee';
 import EditEmployee from '../edit-employee/EditEmployee';
 import ViewEmployee from '../view-employee/ViewEmployee';
-
+import SignIn from '../sign-in/SignIn';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+import Header from '../../Components/Header';
 
 class MainContainer extends React.Component {
     constructor(props) {
@@ -10,34 +12,19 @@ class MainContainer extends React.Component {
     }
 
     render() {
-        return(<div>
-            {
-                this.props.view == 0 && 
-                    <AddEmployee
-                    addEmployee = {this.props.addEmployee}
-                    changeView = {this.props.changeView}/>
-                    
-                    
-            }
-
-            {
-                this.props.view == 1 && 
-                    <ViewEmployee employees={this.props.employees}
-                    delete ={this.props.delete}/>
-            }
-
-
-            {
-                this.props.view == 2 && 
-                    <EditEmployee />
-            }
-
-        </div>)
+        return(
+            <Router>
+            <div>
+                <Header />
+                <Route path="/add-employee" component={AddEmployee}></Route>
+                <Route path="/edit-employee" component={EditEmployee}></Route>
+                <Route path="/view-employee" component={ViewEmployee}></Route>
+                <Route path="/sign-in" component={SignIn}></Route>
+            </div>
+        </Router>
+        );
     }
 }
-
-
-
 
 
 export default MainContainer;

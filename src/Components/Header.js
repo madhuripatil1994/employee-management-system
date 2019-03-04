@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 class Header extends React.Component {
     constructor(props) {
@@ -23,20 +24,17 @@ class Header extends React.Component {
                     </button>
                     <div className="collapse navbar-collapse" id="navbarNav">
                     <ul className="navbar-nav">
-                        {
-                          this.props.isLoggedIn && 
-                            <li className="nav-item active">
-                                <a className="nav-link cursor-pointer" onClick = {this.changeView.bind(this, 0)}> Add Employee </a>
-                            </li>
+                        <Link to="/add-employee">
+                        <li className="nav-item active">
+                            <a className="nav-link cursor-pointer" onClick = {this.changeView.bind(this, 0)}> Add Employee </a>
+                        </li>
+                        </Link>
 
-                        }
-                        {
-                            this.props.isLoggedIn && 
-                            <li className="nav-item">
-                                <a className="nav-link cursor-pointer" onClick ={this.changeView.bind(this, 1)}>View Employee</a>
-                            </li>
-                        }
-                        
+                        <Link to="/view-employeet">
+                        <li className="nav-item">
+                            <a className="nav-link cursor-pointer" onClick ={this.changeView.bind(this, 1)}>View Employee</a>
+                        </li>
+                        </Link>
                        
                         <li className="nav-item" style={{'float': 'right'}}>
 
@@ -46,12 +44,14 @@ class Header extends React.Component {
                                 this.props.isLoggedIn
                                 ? <a className="nav-link cursor-pointer" onClick = {this.changeLoggedIn.bind(this,false)} >
                                         Sign Out</a>
-                                : <a className="nav-link" href="#">Sign In</a>
-                            
+                                : 
+                                <Link to="/sign-in">
+                                <a className="nav-link" href="#">Sign In</a>
+                                </Link>
                             
                           
                         }
-                          </li>
+                        </li>
                     </ul>
                     </div>
                 </nav>)

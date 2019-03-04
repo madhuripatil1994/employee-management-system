@@ -64,12 +64,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-       
-        <Header
-            isLoggedIn={this.state.isLoggedIn} 
-            changeView={this.changeView.bind(this)}
-            changeLoggedIn={this.changeLoggedIn.bind(this)}
-        />
+      
 
         <div className="row">
           <div className="col-sm-3">
